@@ -1,0 +1,7 @@
+{
+    "alertPrice": 50,
+    "discordWebhook": "",
+    "intantOnly": true,
+    "instantURL": "https://cs.money/1.0/market/sell-orders?deliverySpeed=instant&limit=1&order=asc&sort=price&type=2",
+    "normalURL": "https://cs.money/1.0/market/sell-orders?limit=1&order=asc&sort=price&type=2"
+}
