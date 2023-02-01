@@ -1,6 +1,8 @@
 const axios = require('axios');
 const cron = require('node-cron');
 const config = require('./config.json');
+const notifier = require('node-notifier');
+const open = require('open');
 
 cron.schedule('* * * * *', async () =>  {
     const apiURL = config.instantOnly ? config.instantURL : config.normalURL;
@@ -68,6 +70,19 @@ cron.schedule('* * * * *', async () =>  {
             ],
             "attachments": []
           });
+          notifier.notify({
+            title: `New Knife!`,
+            message: `Found ${knifeName} for ${knifePrice} (${knifeDiscount}%)`,
+            sound: true, 
+            wait: true,
+            timeout: 10
+         });
+       
+         notifier.on('click', function (notifierObject, options, event) {
+            open('https://cs.money/market/buy/');
+                  });
+      
+
    const sendWH = await axios.post(config.discordWebhook, embed, {
             headers: { "Content-Type": "application/json" },
           }).catch(err => {
